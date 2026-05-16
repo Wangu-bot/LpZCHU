@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欢迎来到Lpao自助平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0c0c33, #1a1a66, #2e044e, #4a047a);
+            background-size: 400% 400%;
+            animation: bgGradient 15s ease infinite;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        @keyframes bgGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .banner {
+            background: linear-gradient(90deg, #00fefe, #0077fe, #7a00fe, #fe00fe);
+            background-size: 300% 300%;
+            animation: bannerGlow 8s ease infinite;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 0 30px rgba(0, 254, 254, 0.3);
+        }
+
+        @keyframes bannerGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .banner h1 {
+            font-size: 44px;
+            text-shadow: 0 0 15px #00fefe, 0 0 30px #0077fe;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 70px auto;
+            padding: 0 25px;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 34px;
+            margin-bottom: 50px;
+            background: linear-gradient(90deg, #00fefe, #7a00fe);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 12px rgba(0, 254, 254, 0.4);
+        }
+
+        /* 2×2 固定网格布局 */
+        .card-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            justify-content: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: rgba(20, 20, 60, 0.85);
+            border: 2px solid #00fefe;
+            padding: 50px 30px;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.35s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 254, 254, 0.15);
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 电光火石点击特效 */
+        .card:active {
+            transform: scale(0.96);
+            box-shadow: 0 0 40px #00fefe, 0 0 80px #7a00fe;
+            border-color: #fe00fe;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 35px rgba(122, 0, 254, 0.3);
+        }
+
+        /* 机械风标题 */
+        .card h3 {
+            font-size: 34px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #00fefe, #7a00fe, #fe00fe);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(0, 254, 254, 0.5);
+            letter-spacing: 2px;
+        }
+
+        /* 链接样式 */
+        .link-item {
+            display: none;
+            margin-top: 20px;
+            font-size: 15px;
+            color: #00fefe;
+            font-weight: bold;
+            text-decoration: none;
+            line-height: 1.9;
+            word-break: break-all;
+            text-shadow: 0 0 8px #00fefe;
+        }
+
+        .link-item:hover {
+            color: #fe00fe;
+        }
+
+        /* 视频样式 */
+        .video-area {
+            display: none;
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 18px;
+            border: 1px solid #00fefe;
+        }
+
+        /* 成功截图样式（适配手机截图） */
+        .img-area {
+            display: none;
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #7a00fe;
+        }
+        
+        .img-area img {
+            width: 100% !important;
+            height: auto !important;
+            display: block !important;
+            object-fit: contain !important;
+        }
+
+        /* 提交截图-文字提示 */
+        .submit-tips {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #00fefe;
+            text-shadow: 0 0 8px #00fefe;
+            margin-bottom: 15px;
+        }
+
+        /* 提交截图-二维码样式 */
+        .qrcode-area {
+            display: none;
+            width: 78%;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #7a00fe;
+        }
+
+        .qrcode-area img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部横幅 -->
+    <div class="banner">
+        <h1>欢迎来到Lpao自助平台</h1>
+    </div>
+
+    <!-- 功能模块区 -->
+    <div class="container">
+        <h2 class="title">平台功能</h2>
+        <div class="card-box">
+            <!-- 授权模块 -->
+            <div class="card" onclick="toggleAuth()">
+                <h3>授权</h3>
+                <a id="authLink" class="link-item" href="https://www.yjer.buzz/jiyisq/#/bdlp" target="_blank">
+                    https://www.yjer.buzz/jiyisq/#/bdlp
+                </a>
+            </div>
+
+            <!-- 代理设置模块 -->
+            <div class="card" onclick="toggleProxy()">
+                <h3>代理设置</h3>
+                <a id="androidLink" class="link-item" href="https://www.yjer.buzz/jiyisq/#/bdlp/android" target="_blank">
+                    安卓：https://www.yjer.buzz/jiyisq/#/bdlp/android
+                </a>
+                <a id="iosLink" class="link-item" href="https://www.yjer.buzz/jiyisq/#/bdlp/ios" target="_blank">
+                    苹果：https://www.yjer.buzz/jiyisq/#/bdlp/ios
+                </a>
+                <video id="videoArea" class="video-area" controls width="100%">
+                    <source src="教程.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <!-- 成功截图模块（嵌入授权成功截图） -->
+            <div class="card" onclick="toggleImg()">
+                <h3>成功截图</h3>
+                <div id="imgArea" class="img-area">
+                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/11305ee8d9b8414683aa5b3035991702.jpg~tplv-a9rns2rl98-24:720:720.jpeg?lk3s=8e244e95&rcl=202605161530362B752E7FDB51A9AB472A&rrcfp=d52e923b&x-expires=1779521436&x-signature=cjPtaRh%2BVHNy%2BjP81Enz4FP59N4%3D" 
+                         alt="Lpao授权绑定成功截图">
+                </div>
+            </div>
+
+            <!-- 提交截图模块（嵌入VX二维码） -->
+            <div class="card" onclick="toggleSubmit()">
+                <h3>提交截图</h3>
+                <div id="submitTips" class="submit-tips">扫描二维码添加vx</div>
+                <div id="qrcodeArea" class="qrcode-area">
+                    <img src="https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/467c0b6ad3e7422fb74dbdae93289f97.jpg~tplv-a9rns2rl98-24:720:720.jpeg?lk3s=8e244e95&rcl=202605161530362B752E7FDB51A9AB472A&rrcfp=d52e923b&x-expires=1779521436&x-signature=y%2F92Cht4HUHsi2f5853uFm6z0G0%3D" 
+                         alt="添加VX二维码">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 交互逻辑 -->
+    <script>
+        // 授权模块：显示/隐藏链接
+        function toggleAuth() {
+            let link = document.getElementById('authLink');
+            link.style.display = link.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // 代理设置模块：显示/隐藏链接+视频
+        function toggleProxy() {
+            let a = document.getElementById('androidLink');
+            let b = document.getElementById('iosLink');
+            let v = document.getElementById('videoArea');
+            a.style.display = a.style.display === 'block' ? 'none' : 'block';
+            b.style.display = b.style.display === 'block' ? 'none' : 'block';
+            v.style.display = v.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // 成功截图模块：显示/隐藏授权成功截图
+        function toggleImg() {
+            let img = document.getElementById('imgArea');
+            img.style.display = img.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // 提交截图模块：显示/隐藏文字+二维码
+        function toggleSubmit() {
+            let tips = document.getElementById('submitTips');
+            let qrcode = document.getElementById('qrcodeArea');
+            tips.style.display = tips.style.display === 'block' ? 'none' : 'block';
+            qrcode.style.display = qrcode.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+
+</body>
+</html>
